@@ -1,15 +1,17 @@
 # Use a lightweight base image
-FROM python:3.9
+FROM python:3.9-alpine as base
 
 # Set the working directory
 WORKDIR /app
 
 # Copy the application files
-COPY . .
+COPY requirements.txt .
+COPY main.py .
 
 # Install the required packages
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apk add --no-cache --virtual .build-deps build-base && \
+    pip install -r requirements.txt && \
+    apk del .build-deps
 
 # Set the environment variable
 ENV FLASK_APP=main.py
