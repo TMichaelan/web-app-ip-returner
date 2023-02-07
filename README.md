@@ -84,7 +84,7 @@ docker push <your-name>/<image-name>:latest
 docker run -it -p 5000:5000 <your-name>/<image-name>:latest
 ```
 visit http://localhost:5000 (or your port)
-
+<br><br>
 
 ## ✨ Build Kubernetes Cluster
 
@@ -96,6 +96,7 @@ Install them and run the following command to start the cluster:
 ```bash
 minikube start
 ```
+<br>
 
 > 👉 **Step 1** - Deploy the application to a Kubernetes cluster:
 
@@ -124,13 +125,28 @@ Save the file with a .yml extension, for example web-app-ip-returner-deployment.
 
 <b>!!! My docker hub name and repository name--> <i>michaelantt/k8sapp:latest</i> </b>
 
+<br>
 
 > 👉 **Step 2** - Apply the deployment file:
 ```bash
 kubectl apply -f web-app-ip-returner-deployment.yml
 ```
+<br>
 
-### Dev Hints (Optional):
+> 👉 **Step 3** - Forward the ports:
+```bash
+kubectl port-forward <pod-name> 5000:5000
+```
+**Hint: To find out pod-name use:**
+```bash
+kubectl get pods
+```
+<br>
+
+> 👉 **Step 4** - visit http://localhost:5000 (or your port):
+
+<br><br><br>
+### **Dev Hints(Optional)**:
 
 kubectl apply -f web-app-ip-returner.yml
 
