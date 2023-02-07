@@ -1,8 +1,6 @@
 # web-app-ip-returner
 
-## ✨ Build
-
-To build and run the web application, follow these steps:
+## ✨ Download
 
 > 👉 **Step 1** - Download the code from the GH repository (using `GIT`) 
 
@@ -10,15 +8,22 @@ Clone the repository:
 ```bash
 git clone https://github.com/TMichaelan/web-app-ip-returner.git
 ```
-
 > 👉 **Step 2** - Navigate to the project directory:
+
 ```bash
 git cd web-app-ip-returner
 ```
 
-> 👉 **Step 3** - Build the Docker image:
+<br>
+
+## ✨ Docker build 
+
+To build and run the web application, follow these steps:
+
+
+> 👉 **Step 1** - Build the Docker image:
 ```bash
-docker build -t web-app-ip-returner:latest .
+docker build -t <image-name>:latest .
 ```
 or
 
@@ -26,14 +31,73 @@ or
 docker-compose up --build 
 ```
 
-> 👉 **Step 4** - Run the Docker container:
+> 👉 **Step 2** - Run the Docker container:
+```bash
+docker run -p 5000:80 <image-name>:latest
+```
+example:
 ```bash
 docker run -p 5000:80 web-app-ip-returner:latest
 ```
 
-> 👉 **Step 5** - Check if the application is running by visiting http://localhost:5000 in your web browser. You should see the IP address of your machine.
 
-> 👉 **Step 6** - Deploy the application to a Kubernetes cluster:
+> 👉 **Step 3** - Check if the application is running by visiting http://localhost:5000 (or your port) in your web browser. You should see the IP address of your machine.
+
+<br>
+
+## ✨ Upload docker image to Docker Hub
+<br>
+
+> 👉 **Step 1** - Follow the steps from  <b>Docker build</b> section
+
+<br>
+
+> 👉 **Step 2** - Create repository on https://hub.docker.com/  
+
+It would be like "your-name/repository-name"
+
+<br>
+
+> 👉 **Step 3** - Rename your docker image using:
+```bash
+docker tag <image-name>:latest <your-name>/<repository-name>:latest
+```
+
+<br>
+
+> 👉 **Step 4** - Log in to DockerHub using:
+```bash
+docker login
+```
+
+<br>
+
+> 👉 **Step 5** - Push your Docker image to the repository:
+```bash
+docker push <your-name>/<image-name>:latest
+```
+
+<br>
+
+> 👉 **Step 6 (Optional)** - Test the Docker image:
+```bash
+docker run -it -p 5000:5000 <your-name>/<image-name>:latest
+```
+visit http://localhost:5000 (or your port)
+
+
+## ✨ Build Kubernetes Cluster
+
+### You should have the following programs installed:
+1. Minikube - https://kubernetes.io/docs/tasks/tools/#minikube
+2. kubectl - https://kubernetes.io/docs/tasks/tools/#kubectl
+
+Install them and run the following command to start the cluster:
+```bash
+minikube start
+```
+
+> 👉 **Step 1** - Deploy the application to a Kubernetes cluster:
 
 To deploy the application to a Kubernetes cluster, you need to create a deployment file. Here's an example:
 
@@ -58,7 +122,10 @@ spec:
 ```
 Save the file with a .yml extension, for example web-app-ip-returner-deployment.yml.
 
-> 👉 **Step 7** - Apply the deployment file:
+<b>!!! My docker hub name and repository name--> <i>michaelantt/k8sapp:latest</i> </b>
+
+
+> 👉 **Step 2** - Apply the deployment file:
 ```bash
 kubectl apply -f web-app-ip-returner-deployment.yml
 ```
