@@ -15,3 +15,5 @@ docker run -p 5000:5000 <image_name>
 e.g. 
 
 docker run -p 5000:5000 ip-returner
+
+docker-compose up --build 
