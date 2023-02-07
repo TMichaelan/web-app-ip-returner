@@ -66,8 +66,11 @@ kubectl apply -f web-app-ip-returner-deployment.yml
 ### Dev Hints (Optional):
 
 kubectl apply -f web-app-ip-returner.yml
+
 kubectl expose deployment web-app-ip-returner --type=LoadBalancer --port=5000
+
 kubectl get service web-app-ip-returner
+
 kubectl get pods
 
 kubectl run ip-returner --generator=run-pod/v1 --image=web-app-ip-returner:latest --port=80
@@ -75,22 +78,34 @@ kubectl run ip-returner --generator=run-pod/v1 --image=web-app-ip-returner:lates
 kubectl create -f web-app-ip-returner.yml
 
 minikube start
+
 minikube stop
+
 minikube delete
 
 docker build -t ip-returner .
+
 docker run -p 5000:5000 ip-returner
 
 
 docker run -it -p 5000:5000 michaelantt/k8sapp
+
 docker rmi <image-id> -f
 
 kubectl get nodes
+
 kubectl get pods
+
 kubectl describe pod <pod-name>
+
 kubectl exec <pod-name> date
+
 kubectl exec -it <pod-name> sh
+
 kubectl logs <pod-name>
+
 kubectl port-forward <pod-name> 5000:5000
+
 kubectl port-forward <pod-name> 5000:80
+
 kubectl delete -f <file>.yml
