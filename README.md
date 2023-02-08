@@ -1,5 +1,9 @@
 # web-app-ip-returner
 
+Ideas for improvement:
+1. Make .bat .bash files which will automate commands below that need to be entered manually.
+2.
+
 ## ✨ Download
 
 > 👉 **Step 1** - Download the code from the GH repository (using `GIT`) 
