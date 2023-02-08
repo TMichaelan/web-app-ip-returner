@@ -2,6 +2,7 @@
 
 Ideas for improvement (TODO):
 1. Make .bat .bash files which will automate commands below that need to be entered manually.
+2. 
 ...
 
 ## ✨ Download
